@@ -124,6 +124,18 @@
   .ticon{width:24px; height:24px; color:#6b7280; fill:none; stroke:currentColor; stroke-width:2}
   .leaf{color:#22c55e; fill:currentColor; stroke:currentColor}
   .tile-val{font-size:48px; font-weight:900; line-height:1}
+
+  a.tile{
+    display:flex;                 /* 기존 .tile 규칙이 있으면 생략 가능 */
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+  }
+  a.tile:focus-visible{
+    outline:2px solid #111;
+    outline-offset:2px;
+    border-radius:inherit;
+  }
   
   /* ── 하단 탭바: 홈 화면과 동일 ── */
   .tabbar{
