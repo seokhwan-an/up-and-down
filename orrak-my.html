@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>오르락마이</title>
+  <link rel="stylesheet" href="orrak-my.css" />
+</head>
+<body>
+  <div class="phone">
+    <div class="content">
+      <!-- 상단 -->
+      <header class="topbar">
+        <div class="brand">
+            <strong>OLIVE YOUNG</strong>
+            <svg class="caret" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M5 7l5 6 5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <nav class="actions">
+          <button class="iconbtn" aria-label="검색">
+            <svg viewBox="0 0 24 24" class="icon">
+              <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="iconbtn bell" aria-label="알림">
+            <svg viewBox="0 0 24 24" class="icon">
+              <path d="M12 3a5 5 0 0 1 5 5v3.2c0 .8.3 1.6.8 2.2l1.2 1.5H5l1.2-1.5c.5-.6.8-1.4.8-2.2V8a5 5 0 0 1 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 18a3 3 0 0 0 6 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <i class="dot" aria-hidden="true"></i>
+          </button>
+          <button class="iconbtn bag" aria-label="장바구니">
+            <svg viewBox="0 0 24 24" class="icon">
+              <rect x="4" y="8" width="16" height="12" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 8a4 4 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="badge">20</span>
+          </button>
+        </nav>
+      </header>
+
+      <!-- 1차 탭 -->
+      <nav class="tabs" aria-label="상단 탭">
+        <a href="index.html">홈</a>
+        <a href="#">오특</a>
+        <a href="#">랭킹</a>
+        <a class="with-new active" href="orrak.html">오르락 <span class="new">new</span></a>
+        <a href="#">세일</a>
+        <a href="#">기획전</a>
+        <a href="#">이벤트</a>
+      </nav>
+
+      <!-- 2차 탭 -->
+      <nav class="subtabs" aria-label="서브 탭">
+        <a href="#">트렌드</a>
+        <a class="active" href="#">오르락마이</a>
+        <a href="#">관심</a>
+      </nav>
+
+      <!-- 인사 -->
+      <section class="greet">
+        <h1><strong>안녕하세요, 김도영님</strong></h1>
+        <p>오늘도 트렌디한 하루 보내세요.</p>
+      </section>
+
+      <!-- 요약 카드 -->
+      <section class="summary-card" aria-label="보유/전환 요약">
+        <div class="metric">
+          <span class="caption">보유 트렌드 지수</span>
+          <strong class="value">14,500</strong>
+        </div>
+        <div class="swap" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 7h10l-3-3M17 17H7l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="metric right">
+          <span class="caption">전환 OY 포인트</span>
+          <strong class="value">435</strong>
+        </div>
+      </section>
+
+      <!-- 타일 그리드 -->
+      <section class="tiles" aria-label="내 카드">
+        <!-- 보유 열매 -->
+        <article class="tile dark">
+          <div class="tile-head">
+            <svg viewBox="0 0 24 24" class="ticon leaf">
+              <path d="M5 15c2-5 5-5 7 0M12 9c2-5 5-5 7 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="6" cy="18" r="2" />
+              <circle cx="12" cy="18" r="2" />
+              <circle cx="18" cy="18" r="2" />
+            </svg>
+            <span>보유 열매</span>
+          </div>
+          <div class="tile-val">12</div>
+        </article>
+
+        <!-- 찜 트렌드 -->
+        <article class="tile">
+          <div class="tile-head">
+            <svg viewBox="0 0 24 24" class="ticon">
+              <path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.6-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>찜 트렌드</span>
+          </div>
+          <div class="tile-val">31</div>
+        </article>
+
+        <!-- 포트폴리오 -->
+        <article class="tile">
+          <div class="tile-head">
+            <svg viewBox="0 0 24 24" class="ticon">
+              <rect x="5" y="4" width="14" height="16" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="8" y1="13" x2="16" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>포트폴리오</span>
+          </div>
+          <div class="tile-val">4</div>
+        </article>
+
+        <!-- 보유 엠블럼 -->
+        <article class="tile">
+          <div class="tile-head">
+            <svg viewBox="0 0 24 24" class="ticon">
+              <path d="M12 2l2.6 5.3L20 8l-4 4 .9 5.7L12 15l-4.9 2.7L8 12 4 8l5.4-.7L12 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            <span>보유 엠블럼</span>
+          </div>
+          <div class="tile-val">5</div>
+        </article>
+      </section>
+    </div>
+
+    <!-- 하단 탭바 -->
+    <nav class="tabbar" aria-label="하단 내비게이션">
+        <a class="active" href="#">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span>올영홈</span>
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>카테고리</span>
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" class="icon"><circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>발견</span>
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" class="icon"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.6-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>좋아요</span>
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" class="icon"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 20c1.5-4 6-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>마이</span>
+        </a>
+    </nav>
+  </div>
+</body>
+</html>

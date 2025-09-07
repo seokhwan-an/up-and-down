@@ -1,0 +1,136 @@
+:root{
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --text:#111827;
+    --muted:#6b7280;
+    --line:#e5e7eb;
+    --green:#22c55e;
+    --green-d:#16a34a;
+  }
+  
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  }
+  
+  /* ▶ 핸드폰 프레임: 홈 화면과 동일 */
+  .phone{
+    max-width:390px; min-width:360px; margin:24px auto;
+    background:#fff; border-radius:22px; overflow:hidden;
+    border:1px solid #eaeaea; box-shadow:0 6px 30px rgba(0,0,0,.08);
+    position:relative; padding-bottom:12px; /* 탭바 공간 */
+  }
+  /* ▶ 하단 탭바 높이 동일(84px) */
+  .content{padding-bottom:84px}
+  
+  /* ── 상단 바(홈과 동일 패딩/아이콘 크기) ── */
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 16px 8px;        /* ← 홈과 동일 */
+  }
+  .brand{display:flex; align-items:center; gap:6px}
+  .brand strong{font-size:22px; letter-spacing:.4px}
+  .caret{width:18px; height:18px}
+  .actions{display:flex; gap:10px}
+  .iconbtn{appearance:none; border:0; background:none; padding:6px; position:relative; color:#111}
+  .icon{width:24px; height:24px}
+  .bell .dot{position:absolute; right:6px; top:6px; width:8px; height:8px; background:#ef4444; border-radius:50%}
+  .bag .badge{
+    position:absolute; right:0; top:0; transform:translate(30%,-30%);
+    background:#ff3b30; color:#fff; font-size:11px; line-height:1;
+    padding:3px 6px; border-radius:999px; font-weight:800; min-width:18px; text-align:center;
+  }
+  
+  /* ── 1차 탭: 좌우 16px 유령 패딩 + 동일 높이 ── */
+  .tabs{
+    display:flex; align-items:flex-end; gap:18px;
+    padding:6px 0 10px;           /* ← 홈과 동일 */
+    border-bottom:1px solid var(--line);
+    overflow-x:auto; overflow-y:visible;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs::before,.tabs::after{content:""; flex:0 0 16px} /* 좌우 16px */
+  .tabs a{
+    position:relative;
+    display:inline-flex; align-items:center; justify-content:center;
+    height:36px;                  /* ← 동일 */
+    padding:0 2px; line-height:1; font-size: 13px;
+    font-weight:800; color:#6b7280; text-decoration:none;
+  }
+  .tabs a.active{color:#111}
+  .tabs a.active::after{
+    content:""; position:absolute; left:50%; transform:translateX(-50%);
+    bottom:-8px; width:24px; height:3px; background:#111; border-radius:3px;
+  }
+  .tabs a.with-new .new{
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+    font-size:11px; color:#ff2d55; font-weight:900; line-height:1; pointer-events:none;
+  }
+  
+  /* ── 2차 탭(좌우 16px, 높이/두께 정렬) ── */
+  .subtabs{
+    display:flex; gap:18px; padding:8px 16px;
+    border-bottom:1px solid var(--line);
+  }
+  .subtabs a{
+    text-decoration:none; color:#9aa0a6; font-weight:800;
+    position:relative; height:32px; display:flex; align-items:center;
+  }
+  .subtabs a.active{color:#111}
+  .subtabs a.active::after{
+    content:""; position:absolute; left:0; right:0; bottom:-9px;
+    height:3px; background:#111; border-radius:3px;
+  }
+  
+  /* ── 인사말(여백만 홈 기준으로 정리) ── */
+  .greet{padding:18px 16px 6px}
+  .greet h1{margin:0 0 6px; font-size:26px; line-height:1.25}
+  .greet p{margin:0; color:#6b7280; font-size:15px}
+  
+  /* ── 요약 카드(프레임 폭 대비 여백/둥글기 재정렬) ── */
+  .summary-card{
+    margin:14px 16px 16px;
+    padding:16px 14px;
+    border:2px solid var(--green);
+    border-radius:18px;
+    background:#fff;
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:10px;
+  }
+  .metric .caption{display:block; font-size:14px; color:#111; font-weight:400; margin-bottom:8px}
+  .metric .value{font-size:32px; font-weight:700; letter-spacing:-0.3px}
+  .metric.right{text-align:right}
+  .swap svg{width:28px; height:28px; color:var(--green-d)}
+  
+  /* ── 타일 그리드(간격/라운드 홈 기준) ── */
+  .tiles{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px;
+    padding:0 16px 16px;
+  }
+  .tile{
+    background:#f3f5f8; border-radius:22px; padding:16px; min-height:160px;
+    box-shadow:0 4px 18px rgba(0,0,0,.06);
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .tile.dark{
+    background:#1f242c; color:#fff; box-shadow:0 10px 26px rgba(0,0,0,.16);
+  }
+  .tile-head{display:flex; align-items:center; gap:10px; font-size:18px; font-weight:900; color:#2b323b}
+  .tile.dark .tile-head{color:#fff}
+  .ticon{width:24px; height:24px; color:#6b7280; fill:none; stroke:currentColor; stroke-width:2}
+  .leaf{color:#22c55e; fill:currentColor; stroke:currentColor}
+  .tile-val{font-size:48px; font-weight:900; line-height:1}
+  
+  /* ── 하단 탭바: 홈 화면과 동일 ── */
+  .tabbar{
+    position:absolute; left:0; right:0; bottom:0;
+    display:flex; justify-content:space-around; align-items:center;
+    padding:8px; border-top:1px solid #edf0f3; background:#fff;
+  }
+  .tabbar a{display:flex; flex-direction:column; align-items:center; gap:4px; color:#1f2937; text-decoration:none; font-size:11.5px; font-weight:800; min-width:60px}
+  .tabbar .icon{width:24px; height:24px}
+  .tabbar a.active{color:#111}
