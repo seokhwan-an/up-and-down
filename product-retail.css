@@ -1,0 +1,148 @@
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --brand:#22c55e;
+  --brand-dark:#16a34a;
+  --chip:#eafaf0;
+  --black:#000;
+}
+
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Apple Color Emoji,Noto Color Emoji,Arial,sans-serif;
+}
+
+/* Phone frame */
+.phone{
+  max-width:390px; min-width:360px;
+  margin:24px auto;
+  background:#fff;
+  border-radius:22px;
+  box-shadow:0 6px 30px rgba(0,0,0,.08);
+  overflow:hidden;
+  border:1px solid #eaeaea;
+}
+
+/* Status bar */
+.status{display:flex; justify-content:space-between; align-items:center; padding:10px 14px; font-weight:600}
+.carrier{display:flex; align-items:center; gap:8px; color:#111}
+.pill{display:inline-block; background:#111; color:#fff; font-size:10px; padding:2px 6px; border-radius:10px}
+.icons{display:flex; align-items:center; gap:8px; color:#111}
+.dot{width:6px; height:6px; background:#111; border-radius:50%; display:inline-block}
+.bars{display:flex; gap:2px}
+.bars i{width:3px; height:3px; background:#111; display:block}
+.bars i:nth-child(2){height:5px}
+.bars i:nth-child(3){height:7px}
+.bars i:nth-child(4){height:9px}
+
+/* Tabs */
+.tabs{display:flex; gap:22px; padding:10px 18px 6px; border-bottom:1px solid var(--line); font-weight:600}
+.tabs a{color:var(--muted); text-decoration:none; position:relative; display:flex; gap:4px; align-items:center}
+.tabs a.active{color:var(--text)}
+.tabs a.active:after{content:""; position:absolute; left:0; right:0; bottom:-10px; height:3px; background:var(--text); border-radius:3px}
+.count-badge{font-weight:700; font-size:11px; line-height:1}
+
+/* Chart Area */
+.chart-wrap{padding:12px 14px 4px}
+.chart{
+  background:linear-gradient(#fff,#fff) padding-box,
+             repeating-linear-gradient(to bottom, transparent, transparent 24px, #f4f6f8 25px) border-box;
+  border-radius:14px; border:1px solid var(--line); padding:12px; position:relative;
+}
+.hint{position:absolute; left:46px; top:22px; background:#0f172a; color:#fff; padding:8px 10px; border-radius:10px; font-size:12px; box-shadow:0 6px 14px rgba(2,6,23,.2)}
+.hint small{display:block; opacity:.75; font-size:11px}
+.hint:after{content:""; position:absolute; left:12px; bottom:-8px; border:8px solid transparent; border-top-color:#0f172a}
+.axis-line{position:absolute; left:0; right:0; top:50%; height:0; border-top:1.5px dashed #cfead8}
+.mini-bars{position:absolute; left:8px; right:8px; bottom:10px; height:40px; display:flex; align-items:flex-end; gap:3px; opacity:.35}
+.mini-bars span{display:block; width:5px; background:#a7f3d0; border-radius:2px}
+
+/* Period chips */
+/* Period chips (fixed) */
+.periods{
+  display:flex;
+  align-items:center;         /* 수직 가운데 */
+  justify-content:center;
+  gap:18px;
+  padding:12px 16px 8px;
+  white-space:nowrap;         /* 줄바꿈 방지 */
+  flex-wrap:nowrap;
+}
+
+/* 모든 칩 공통 크기/정렬 */
+.periods > span{
+  display:inline-flex;        /* 동일 높이 보장 */
+  align-items:center;
+  justify-content:center;
+  height:28px;                /* 고정 높이 */
+  padding:0 12px;             /* 좌우 패딩만 */
+  border-radius:12px;
+  line-height:1;              /* 라인 높이로 인한 흔들림 방지 */
+  font-size:13px;
+}
+
+/* 선택된 칩 */
+.chip{
+  background:#eafaf0;         /* 연한 초록 배경 */
+  color:#15803d;
+  font-weight:800;
+}
+
+/* 비활성 칩 */
+.ghost{
+  background:transparent;
+  color:#6b7280;              /* 회색 텍스트 */
+  font-weight:600;            /* 필요 시 500~600 선호 */
+}
+
+
+/* Info list */
+.panel{background:var(--card); border-top:8px solid var(--bg); padding:12px 16px 18px}
+.panel h3{margin:6px 0 10px; font-size:18px}
+.kv{display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line); font-size:14px}
+.kv:last-child{border-bottom:none}
+.kv .label{color:var(--muted)}
+
+/* Summary bullets */
+.summary{margin-top:8px}
+.bullet{display:flex; gap:10px; align-items:flex-start; padding:9px 0; border-bottom:1px dashed var(--line)}
+.bullet:last-child{border-bottom:none}
+.check{width:22px; height:22px; border-radius:50%; background:#dcfce7; display:grid; place-items:center; font-size:14px; color:#16a34a; font-weight:800}
+.summary p{margin:0; font-size:14px; line-height:1.45}
+
+.center-link{display:block; text-align:center; color:#64748b; text-decoration:none; padding:12px 0}
+
+/* Delivery row + CTA */
+.deliv{display:flex; align-items:center; gap:10px; border-top:8px solid var(--bg); background:#fff; padding:10px 16px 0}
+.todaydream{margin-left:auto; display:flex; align-items:center; gap:8px; font-size:14px; color:#374151}
+.deliv input{accent-color:#111}
+.cta-wrap{display:flex; gap:10px; padding:10px 16px 16px; background:#fff}
+.btn{flex:1; padding:14px 14px; border-radius:14px; border:1px solid #111; background:#fff; font-weight:800; font-size:15px}
+.btn.primary{background:#111; color:#fff}
+
+/* Simple gift icon */
+.gift{display:flex; align-items:center; gap:8px; color:#111}
+.gift i{width:18px; height:18px; border:2px solid #111; border-radius:3px; position:relative; display:inline-block}
+.gift i:before{content:""; position:absolute; left:50%; top:-6px; width:12px; height:8px; border:2px solid #111; border-bottom:none; border-radius:6px 6px 0 0; transform:translateX(-50%)}
+.gift i:after{content:""; position:absolute; left:50%; top:0; bottom:0; width:2px; background:#111; transform:translateX(-50%)}
+
+/* SVG styling */
+svg polyline{fill:none; stroke:var(--brand); stroke-width:3}
+svg circle{fill:var(--brand)}
+
+/* Modal */
+.modal{position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:999;}
+.modal.show{opacity:1; pointer-events:auto;}
+.modal__backdrop{position:absolute; inset:0; background:rgba(0,0,0,.35);}
+.modal__panel{position:relative; width:min(92vw,420px); background:#fff; border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25); padding:24px;}
+.modal__close{position:absolute; top:10px; right:12px; border:0; background:transparent; font-size:22px; cursor:pointer;}
+.modal__score{margin:12px 0 18px; font-size:16px;}
+.modal__score strong{font-size:20px; font-weight:800; margin-left:8px;}
+.modal__actions{display:flex; gap:10px; justify-content:flex-end; margin-top:10px;}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>트렌드지수 – Mobile UI</title>
+  <link rel="stylesheet" href="product-retail.css" />
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <div class="phone">
+    <!-- Status bar -->
+    <div class="status">
+      <div id="statusTime">3:40</div>
+      <div class="carrier"><span>5G</span><span class="pill">91</span></div>
+      <div class="icons">
+        <span class="bars"><i></i><i></i><i></i><i></i></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <nav class="tabs">
+      <a href="#">상품설명</a>
+      <a href="#"><span>리뷰</span><span class="count-badge">999+</span></a>
+      <a class="active" href="#">트렌드지수</a>
+      <a href="#"><span>Q&amp;A</span><span class="count-badge">30</span></a>
+    </nav>
+
+    <!-- Chart area -->
+    <section class="chart-wrap">
+  <div class="chart">
+    <div class="hint" id="hint">
+      <small id="hintDate">8월 28일</small>
+      <strong id="hintValue">2,810점</strong>
+    </div>
+    <div class="axis-line"></div>
+
+    <svg id="trendSvg" viewBox="0 0 320 140" width="100%" height="140" aria-hidden="true">
+      <polyline id="trendLine" points="" />
+    </svg>
+
+    <div class="mini-bars" id="miniBars"></div>
+  </div>
+</section>
+
+    <!-- Period chips -->
+    <div class="periods">
+      <span class="ghost">1주</span>
+      <span class="chip">1개월</span>
+      <span class="ghost">3개월</span>
+      <span class="ghost">6개월</span>
+      <span class="ghost">1년</span>
+    </div>
+
+    <!-- My Trend Index -->
+    <div class="panel">
+      <h3>내 트렌드지수 보기</h3>
+      <div class="kv"><span class="label">2025.05.04 구매</span><strong>1,825점</strong></div>
+      <div class="kv"><span class="label">2025.08.28 구매</span><strong>2,810점</strong></div>
+      <div class="kv"><span class="label">보유 수량</span><strong>10 열매</strong></div>
+      <div class="kv"><span class="label">전환 가능 포인트</span><strong>710p</strong></div>
+    </div>
+
+    <!-- Summary -->
+    <div class="panel">
+      <h3>트렌드 요약 보기</h3>
+      <div class="summary">
+        <div class="bullet">
+          <span class="check">✓</span>
+          <p>20대 여성이 많이 구매한 TOP 50 상품이에요.</p>
+        </div>
+        <div class="bullet">
+          <span class="check">✓</span>
+          <p>최근 1주일 이내 트렌드 지수가 50% 이상 상승했어요.</p>
+        </div>
+      </div>
+      <a class="center-link" href="#">관련 셔터 게시물 보기</a>
+    </div>
+
+    <!-- Delivery opt-in -->
+    <div class="deliv">
+      <label class="gift"><i></i><span>선물</span></label>
+      <label class="todaydream">
+        <input type="checkbox" /> 오늘드림으로 받아 보시겠어요?
+      </label>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="cta-wrap">
+      <button class="btn">장바구니</button>
+      <button class="btn primary" id="sellBtn">판매하기</button>
+    </div>
+  </div>
+  <!-- 모달 -->
+<div class="modal" id="sellModal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal__backdrop" data-close="true"></div>
+  <div class="modal__panel" role="document" tabindex="-1">
+    <button class="modal__close" aria-label="닫기" data-close="true">×</button>
+    <h3>판매 전 확인</h3>
+
+    <!-- 말풍선(#hintDate, #hintValue)의 값을 여기로 복사해 표시 -->
+    <p class="modal__score">
+      <span id="sellDate">–</span>
+      <strong id="sellScore">–</strong>
+    </p>
+
+    <div class="modal__actions">
+      <button class="btn" data-close="true">취소</button>
+      <button class="btn primary">확인하고 판매</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
