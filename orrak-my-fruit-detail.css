@@ -271,3 +271,96 @@ body{margin:0; background:var(--bg); color:var(--text);
 .oy-modal__close:focus-visible{
   outline:2px solid var(--green-d); outline-offset:2px; border-radius:12px;
 }
+
+/* 공통 토글 숨김 (첫 모달과 동일) */
+.oy-modal-toggle{ position:fixed; width:0; height:0; opacity:0; pointer-events:none; }
+
+/* 성공 모달 레이어 */
+.oy-success{
+  position:fixed; inset:0; z-index:1100;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .2s ease;
+}
+#oySuccess:checked ~ .oy-success{ opacity:1; pointer-events:auto; }
+
+/* 성공이 열리면 첫 모달 가리기 */
+#oySuccess:checked ~ .oy-modal{ opacity:0 !important; pointer-events:none !important; }
+
+/* 배경 딤 */
+.oy-success__backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.45); }
+
+/* 패널 */
+.oy-success__panel{
+  position:relative; width:min(92vw,360px);
+  background:#fff; border-radius:24px; box-shadow:0 20px 60px rgba(0,0,0,.25);
+  padding:20px 18px 16px; text-align:center; z-index:2;
+}
+.oy-success__title{ margin:4px 0 12px; font-size:28px; font-weight:900; }
+
+/* 코인 배경(장식) */
+.coins{ position:absolute; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
+.coins-img{ position:absolute; left:50%; transform:translateX(-50%); width:120%; max-width:none; }
+.coins-img.top{ top:-10px; }
+.coins-img.bottom{ bottom:-10px; }
+
+/* 마스코트(심플) */
+.mascot{
+  width:160px; height:160px; margin:8px auto 10px;
+  background:#22c55e; border-radius:50%;
+  box-shadow:inset 0 -10px 0 #16a34a, 0 10px 24px rgba(0,0,0,.15);
+  position:relative;
+}
+.mascot .leaf{
+  position:absolute; width:32px; height:38px; left:50%; top:-16px; transform:translateX(-50%) rotate(-10deg);
+  background:linear-gradient(#34d399,#16a34a); border-radius:20px 20px 2px 20px;
+}
+.mascot .eye{ position:absolute; top:54px; width:22px; height:22px; background:#fff; border-radius:50%; }
+.mascot .eye.l{ left:48px; }
+.mascot .eye.r{ right:48px; }
+.mascot .eye::after{ content:""; position:absolute; left:6px; top:6px; width:10px; height:10px; background:#111; border-radius:50%; }
+.mascot .mouth{ position:absolute; left:50%; top:94px; width:30px; height:18px; transform:translateX(-50%); border-bottom:8px solid #0f172a; border-radius:0 0 20px 20px; }
+.mascot .coin{
+  position:absolute; left:40px; top:86px; width:42px; height:42px; border-radius:50%;
+  background:radial-gradient(70% 70% at 35% 30%, #ffef9c 0%, #ffd54d 50%, #f0b400 100%);
+  box-shadow:inset 0 4px 0 #ffd96a, inset 0 -6px 0 #c68700;
+}
+.mascot .coin::after{
+  content:"P"; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  font-weight:900; color:#c68700;
+}
+
+/* 성공 CTA 버튼 */
+.success-ctas{ display:flex; gap:10px; margin-top:8px; }
+.success-ctas .btn{
+  flex:1; height:44px; border-radius:12px; font-weight:900; font-size:14px;
+  display:flex; align-items:center; justify-content:center; text-decoration:none; cursor:pointer;
+}
+.success-ctas .btn.ghost{ background:#eafaf0; color:#15803d; border:1px solid #cfead8; }
+.success-ctas .btn.primary{ background:#16a34a; color:#fff; }
+
+/* === 두 모달 공통 사이즈 === */
+:root{
+  --oy-modal-width: min(92vw, 380px);   /* 필요하면 360px 등으로 조정 */
+  --oy-modal-radius: 24px;
+  --oy-modal-padding: 20px 18px 16px;
+  --oy-modal-shadow: 0 20px 60px rgba(0,0,0,.25);
+  --oy-modal-maxh: min(90vh, 640px);   /* 내용 많을 때 대비 */
+}
+
+/* 패널 크기/모양 통일 */
+.oy-modal__panel,
+.oy-success__panel{
+  width: var(--oy-modal-width);
+  border-radius: var(--oy-modal-radius);
+  padding: var(--oy-modal-padding);
+  box-shadow: var(--oy-modal-shadow);
+  max-height: var(--oy-modal-maxh);
+  overflow-y: auto;                    /* 스크롤 처리 */
+}
+
+/* (선택) 배경 딤도 동일하게 */
+.oy-modal__backdrop,
+.oy-success__backdrop{
+  background: rgba(0,0,0,.45);
+}
+

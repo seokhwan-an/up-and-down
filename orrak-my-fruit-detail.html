@@ -188,6 +188,35 @@
   </div>
 
 
+  <!-- ✅ 성공 모달 토글 -->
+<input id="oySuccess" type="checkbox" class="oy-modal-toggle" />
+
+<!-- ✅ 성공 모달 -->
+<div class="oy-success" role="dialog" aria-modal="true" aria-labelledby="oySuccessTitle">
+  <!-- 배경 (클릭 시 닫기) -->
+  <label for="oySuccess" class="oy-success__backdrop" aria-hidden="true"></label>
+
+  <!-- 동전 배경 (장식) -->
+  <!-- <div class="coins" aria-hidden="true">
+    <img class="coins-img top" src="image/modal/coin-top.png" alt="">
+    <img class="coins-img bottom" src="image/modal/coin-bottom.png" alt="">
+  </div> -->
+
+  <!-- 패널 -->
+  <div class="oy-success__panel">
+    <h3 id="oySuccessTitle" class="oy-success__title">50P 획득!</h3>
+
+    <!-- 간단 마스코트(플레이스홀더) -->
+    <img class="mascot-img" src="/image/modal/oy-mascot.png" alt="포인트 캐릭터" />
+
+    <div class="success-ctas">
+      <label for="oySuccess" class="btn ghost">창 닫기</label>
+      <a href="#" class="btn primary">내 포인트 보러가기</a>
+    </div>
+  </div>
+</div>
+
+
   <!-- 모달 토글 (숨김 체크박스) -->
 <input id="oyModal" type="checkbox" class="oy-modal-toggle" />
 
@@ -234,7 +263,7 @@
     </ul>
 
     <!-- 확인을 눌러도 닫히게끔 라벨로 처리 -->
-    <label for="oyModal" class="oy-modal__cta">OY 포인트로 바꾸기</label>
+    <label for="oySuccess" class="oy-modal__cta">OY 포인트로 바꾸기</label>
   </div>
 </div>
 
