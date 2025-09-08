@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>오르락마이 – 보유 열매 상세</title>
   <link rel="stylesheet" href="orrak-my-fruit-detail.css" />
+  <script>
+  window.OY_STOCK_CHART_OPTIONS = {
+    min: 6000, max: 9000, tickMs: 1500, pointsCount: 40
+    // ids: { root:'oyStockChart', svg:'oyChart', ... }  // id를 커스터마이즈할 때
+  };
+</script>
+<script src="js/orrak-my-fruit-detail/stock-chart.js" defer></script>
+
 </head>
 <body>
   <div class="phone">
@@ -70,7 +78,7 @@
 
       <!-- 상단 리스트 1개 -->
       <section class="mini-list">
-        <article class="rowcard">
+        <article class="rowcard js-oy-row">
           <img src="image/orrak-my-fruit/dalba.png" class="thumb">
           <div class="info">
             <h3 class="tit">딜라이트 프로젝트 단백질…</h3>
@@ -85,57 +93,44 @@
             </div>
           </div>
           <div class="right">
-            <div class="pts">8,000<span class="unit">점</span></div>
-            <div class="chg up">+4,000점 <span>(100.0%)</span></div>
+            <div class="pts"><span class="js-pts">8,000</span><span class="unit">점</span></div>
+            <div class="chg up">
+                <span class="js-diff">+4,000점</span>
+                <span class="js-pct">(100.0%)</span>
+            </div>
           </div>
         </article>
       </section>
 
-      <!-- 전환 가능 포인트 + 그래프 카드 -->
-      <section class="statcard" aria-label="전환 가능 포인트">
-        <h2>전환 가능 포인트</h2>
-        <div class="point">120P</div>
-        <p class="delta">구매 시점보다 <b class="up">+4,000점 (+100.0%)</b></p>
+      <!-- 카드 내부 -->
+<section class="statcard">
+  <h2>전환 가능 포인트</h2>
+  <div class="point" id="oyPoint">120P</div>
+  <p class="delta">구매 시점보다 <b id="deltaText" data-base="4000" class="up">+4,000점 (+100.0%)</b></p>
 
-        <div class="chart">
-          <!-- 눈금 배경 라인 -->
-          <div class="grid"></div>
+  <!-- 👇 동적 차트 -->
+  <div class="chart" id="oyStockChart">
+    <div class="grid"></div>
+    <svg id="oyChart" viewBox="0 0 320 170" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="oyArea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#22c55e" stop-opacity="0.42"/>
+          <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path id="oyAreaPath" fill="url(#oyArea)"></path>
+      <path id="oyLinePath" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round"></path>
+      <circle id="oyMarker" r="5" fill="#16a34a"></circle>
+    </svg>
 
-          <!-- 그래프 -->
-          <svg viewBox="0 0 320 170" width="100%" height="170" aria-hidden="true">
-            <defs>
-              <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#22c55e" stop-opacity="0.42"/>
-                <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <!-- area -->
-            <path d="M0,120
-                     C30,100 50,130 75,110
-                     C95,95 115,112 140,110
-                     C160,108 170,135 190,120
-                     C210,105 220,150 240,70
-                     C260,45 300,52 320,40
-                     L320,170 L0,170 Z"
-                  fill="url(#areaGrad)"/>
-            <!-- stroke -->
-            <path d="M0,120
-                     C30,100 50,130 75,110
-                     C95,95 115,112 140,110
-                     C160,108 170,135 190,120
-                     C210,105 220,150 240,70
-                     C260,45 300,52 320,40"
-                  fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
-            <!-- 마지막 점 -->
-            <circle cx="318" cy="40" r="5" fill="#16a34a"/>
-          </svg>
+    <!-- 말풍선 -->
+    <div class="hint" id="oyHint">
+      <small id="oyHintDate">-</small>
+      <strong id="oyHintValue">-</strong>
+    </div>
+  </div>
+</section>
 
-          <!-- 말풍선 -->
-          <div class="hint" style="left:236px; top:82px;">
-            <small>9월 12일</small>
-            <strong>8,000</strong>
-          </div>
-        </div>
 
         <!-- X축 라벨 -->
         <!-- <div class="xlabels">

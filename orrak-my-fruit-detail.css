@@ -105,9 +105,39 @@ body{margin:0; background:var(--bg); color:var(--text);
 .chart svg{display:block}
 
 /* 말풍선 */
-.hint{position:absolute; background:#0f172a; color:#fff; padding:8px 10px; border-radius:10px; font-size:12px; box-shadow:0 6px 14px rgba(2,6,23,.2)}
+/* .hint{position:absolute; background:#0f172a; color:#fff; padding:8px 10px; border-radius:10px; font-size:12px; box-shadow:0 6px 14px rgba(2,6,23,.2)}
 .hint small{display:block; opacity:.75; font-size:11px}
-.hint:after{content:""; position:absolute; left:14px; bottom:-7px; border:7px solid transparent; border-top-color:#0f172a}
+.hint:after{content:""; position:absolute; left:14px; bottom:-7px; border:7px solid transparent; border-top-color:#0f172a} */
+
+/* 차트 캔버스 */
+.chart{ position:relative; background:#fff; border-radius:16px; overflow:hidden; }
+.chart svg{ display:block; width:100%; height:170px; }
+.grid{
+  position:absolute; inset:0;
+  background:repeating-linear-gradient(to bottom, transparent 0 26px, #edf2f7 26px 27px);
+  pointer-events:none;
+}
+
+/* 말풍선 */
+/* 말풍선: 포인트 '아래'에 살짝 붙이기 */
+.hint{
+  position:absolute;
+  background:#0f172a; color:#fff;
+  padding:8px 10px; border-radius:10px; font-size:12px;
+  box-shadow:0 6px 14px rgba(2,6,23,.2);
+  transform:translate(-50%, 10px);     /* ← 아래로 10px */
+  white-space:nowrap; pointer-events:none;
+}
+.hint small{ display:block; opacity:.75; font-size:11px; }
+
+/* 꼬리(위쪽을 향하도록 변경) */
+.hint::after{
+  content:"";
+  position:absolute; left:50%; top:-7px;          /* ← 위쪽으로 이동 */
+  transform:translateX(-50%);
+  border:7px solid transparent;
+  border-bottom-color:#0f172a;                     /* ↓ 아래 방향 삼각형 */
+}
 
 /* X축 라벨 */
 .xlabels{display:flex; justify-content:space-between; padding:8px 6px 2px; color:#6b7280; font-size:12px}
