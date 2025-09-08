@@ -1,0 +1,171 @@
+:root{
+  --bg:#f6f7fb;
+  --card:#fff;
+  --text:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --brand:#16a34a;           /* 포인트 초록 */
+  --accent:#111;             /* 버튼/텍스트 진한색 */
+  --danger:#ef4444;          /* 할인 % 색 */
+}
+
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+}
+
+/* Phone frame (올영홈과 동일 규격) */
+.phone{
+  max-width:390px; min-width:360px;
+  margin:16px auto;
+  background:var(--card);
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid #ececec;
+  box-shadow:0 6px 28px rgba(0,0,0,.06);
+}
+
+/* App bar */
+.appbar{
+  display:flex; align-items:center; gap:2px;
+  padding:25px 10px 2px;
+}
+.appbar .grow{flex:1}
+.iconbtn{
+  width:36px; height:36px; display:grid; place-items:center;
+  background:transparent; border:0; color:#111; cursor:pointer;
+}
+.iconbtn svg{width:22px; height:22px}
+.iconbtn.bag{position:relative}
+.badge{
+  position:absolute; right:0; top:0;
+  transform:translate(40%,-40%);
+  min-width:18px; height:18px; padding:0 4px;
+  background:#ef4444; color:#fff; border-radius:999px;
+  font-size:11px; display:inline-flex; align-items:center; justify-content:center;
+}
+
+/* Hero */
+.hero{margin-top: 0;position:relative; aspect-ratio: 9/12; background:#fafafa;}
+.hero img{width:100%; height:100%; object-fit:cover; display:block}
+
+.hero .pager{
+  position:absolute; left:50%; bottom:10px; transform:translateX(-50%);
+  background:rgba(0,0,0,.6); color:#fff; border-radius:20px;
+  font-size:12px; padding:4px 10px;
+}
+.hero .sticker{
+  position:absolute; right:10px; top:10px;
+  background:#111; color:#fff; font-size:10px; line-height:1.2;
+  padding:6px 8px; border-radius:8px; text-align:center;
+}
+.hero .sticker b{font-size:12px}
+
+/* 이미지가 잘리지 않도록 전체 보이게 */
+.hero img.contain{
+  object-fit: contain;
+  background:#fff;     /* 여백이 생길 때 배경색 */
+}
+
+
+/* Content */
+.content{padding:14px 14px 8px}
+.brand-row{display:flex; align-items:center; gap:8px; margin-bottom:6px}
+.brand{
+  background:#f2f4f6; color:#111; border:0; border-radius:12px; padding:6px 10px; font-weight:800; cursor:pointer;
+}
+.share-mini{width:30px; height:30px; display:grid; place-items:center; border:0; background:#f2f4f6; border-radius:8px; color:#111}
+.share-mini svg{width:18px; height:18px}
+
+.title{margin:2px 0 6px; font-size:18px; line-height:1.35}
+.subnote{margin:0; color:var(--muted); font-size:12px}
+
+.pricebox{margin-top:8px}
+.origin s{color:#9aa3af}
+.pricebox .row{display:flex; align-items:flex-end; gap:8px; margin-top:4px}
+.rate{color:var(--danger); font-weight:900; font-size:18px}
+.price{font-weight:900; font-size:22px}
+.price .unit{font-size:14px; font-weight:700; margin-left:2px; color:#374151}
+.benefit{margin-left:auto; background:#f3f4f6; color:#374151; font-size:12px; padding:4px 8px; border-radius:10px}
+
+.divider{height:8px; background:#f7f8fb; margin:12px -14px 0}
+
+.buybox{padding:12px 0 14px}
+.dream{display:flex; align-items:center; gap:10px; font-weight:700; color:#111}
+.dream input{appearance:none; width:18px; height:18px; border:2px solid #94a3b8; border: radius 4px; position:relative; cursor:pointer}
+.dream .mark{display:none}
+
+/* 오늘드림 체크박스: 네모 + 검정 배경에 흰색 체크 */
+:root{
+  --cb-size: 20px;      /* 크기 조절 */
+  --cb-border: #b6c0ce; /* 미선택 테두리 */
+  --cb-on: #111;        /* 선택 시 배경/테두리(검정) */
+}
+
+.dream input[type="checkbox"]{
+  appearance: none;
+  width: var(--cb-size);
+  height: var(--cb-size);
+  border: 2px solid var(--cb-border);
+  border-radius: 4px;          /* 네모 */
+  background: #fff;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+}
+
+.dream input[type="checkbox"]:checked{
+  background: var(--cb-on);    /* 검정 배경 */
+  border-color: var(--cb-on);  /* 테두리도 검정 */
+}
+
+/* 흰색 체크(✓) */
+.dream input[type="checkbox"]:checked::after{
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 12px; height: 7px;      /* 체크 길이/높이 */
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  transform: translate(-50%, -60%) rotate(-45deg);
+}
+
+/* 키보드 포커스 가시성(선택) */
+.dream input[type="checkbox"]:focus-visible{
+  box-shadow: 0 0 0 3px rgba(17,17,17,.25);
+}
+
+
+.cta{display:flex; gap:10px; margin-top:10px}
+.btn{
+  flex:1; height:48px; border-radius:14px;
+  font-weight:900; font-size:15px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  border:1px solid #111; background:#fff; color:#111;
+}
+.btn.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+.btn .gift svg{width:18px; height:18px}
+
+/* 간격을 원본처럼 더 촘촘하게 */
+.content{ padding: 8px 14px 8px; }    /* 기존 14 상단 → 8로 축소 */
+.hero{ margin-bottom: 6px; }          /* 이미지와 본문 사이 간격 축소 */
+.appbar{ padding: 20px 20px 2px; }     /* 상단바 하단 패딩 축소 */
+
+/* 브랜드 라인 */
+.brand-line{
+  display:flex; align-items:center; gap:6px;
+  margin: 2px 0 6px;
+}
+.brand-chip{
+  height:30px; padding:0 px;
+  color:#111; font-size:14px;
+}
+.brand-caret{
+  width:30px; height:30px;
+  display:grid; place-items:center;
+  border:0; border-radius:10px;
+  background:#f2f4f6; color:#111; cursor:pointer;
+}
+.brand-caret svg{ width:18px; height:18px; }
