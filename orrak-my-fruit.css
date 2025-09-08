@@ -107,11 +107,6 @@ a.item{
   color:inherit;
   /* 이미 .item{display:grid; …}가 있다면 그대로 적용됨 */
 }
-a.item:focus-visible{
-  outline:2px solid #111;
-  outline-offset:2px;
-  border-radius:16px; /* 카드 둥근값과 일치 */
-}
 
   
   /* 하단 탭바 (홈과 동일) */
@@ -123,4 +118,7 @@ a.item:focus-visible{
   .tabbar a{display:flex; flex-direction:column; align-items:center; gap:4px; color:#1f2937; text-decoration:none; font-size:11.5px; font-weight:800; min-width:60px}
   .tabbar .icon{width:24px; height:24px}
   .tabbar a.active{color:#111}
-  
+
+  .item.locked{ position:relative; overflow:hidden; }
+  .item.locked > *{ filter: blur(.2px); }
+  .item.locked::after{ content:""; position:absolute; inset:0; background:rgba(255,255,255,.55); }
