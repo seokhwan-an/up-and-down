@@ -169,3 +169,6 @@ body{
   background:#f2f4f6; color:#111; cursor:pointer;
 }
 .brand-caret svg{ width:18px; height:18px; }
+
+/* 버튼 스타일이 a 태그에도 적용되도록 */
+a.btn{ text-decoration:none; color:inherit; display:flex; align-items:center; justify-content:center; }

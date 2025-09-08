@@ -1,0 +1,194 @@
+:root{
+  --bg:#f6f7fb;
+  --card:#fff;
+  --text:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --brand:#16a34a;
+  --brand2:#22c55e;
+  --ink:#111;
+}
+
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+}
+
+/* 폰 프레임: 올영 홈과 동일 폭 */
+.phone{
+  max-width:390px; min-width:360px;
+  margin:16px auto;
+  background:var(--card);
+  border-radius:22px;
+  border:1px solid #ececec;
+  box-shadow:0 6px 28px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+
+/* 상단 헤더: 타이틀 중앙, 닫기 우측 */
+.oc-appbar{
+  position:relative;
+  height:48px;
+  display:flex; align-items:center; justify-content:center;
+  border-bottom:1px solid var(--line);
+}
+.oc-appbar h1{
+  margin:0; font-size:16px; font-weight:800; letter-spacing:-.2px;
+}
+.oc-close{
+  position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  width:36px; height:36px; display:grid; place-items:center;
+  background:transparent; border:0; color:var(--ink); cursor:pointer;
+}
+.oc-close svg{width:22px;height:22px}
+
+/* 본문 */
+.oc-main{padding-bottom:10px}
+
+/* 완료 섹션 */
+.oc-done{
+  display:grid; place-items:center; text-align:center;
+  padding:18px 16px 12px;
+}
+.oc-illus{position:relative; width:96px; height:96px}
+.oc-illus svg{width:100%; height:100%}
+/* 검정 원형 체크(좌하단) */
+.oc-badge{
+  position:absolute; left:-4px; bottom:4px;
+  width:24px; height:24px; border-radius:50%;
+  background:#111; color:#fff; font-weight:900;
+  display:grid; place-items:center; font-size:14px;
+  box-shadow:0 3px 8px rgba(0,0,0,.2);
+}
+.oc-done h2{margin:10px 0 4px; font-size:20px; font-weight:900; letter-spacing:-.3px}
+.oc-sub{margin:0; color:var(--muted); font-size:14px}
+
+/* 섹션 간 회색 분리 영역 */
+.oc-section-gap{height:8px; background:#f7f8fb; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+
+/* 라인들 */
+.oc-row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 16px; border-bottom:1px solid var(--line);
+}
+.oc-label{font-weight:800}
+.oc-value{display:flex; align-items:center; gap:10px}
+.oc-row--single{padding-top:10px; padding-bottom:14px}
+.oc-value--only{margin-left:2px}
+
+code{
+  background:#f5f6f8; padding:4px 6px; border-radius:6px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:12px;
+}
+.oc-iconbtn{
+  width:28px; height:28px; display:grid; place-items:center;
+  border:1px solid var(--line); border-radius:8px; background:#fff; color:#111; cursor:pointer;
+}
+.oc-iconbtn svg{width:16px;height:16px}
+.oc-link{
+  text-decoration:none; font-weight:700; color:#374151;
+  background:#f2f4f6; padding:6px 10px; border-radius:999px;
+}
+.oc-chev{width:18px;height:18px;color:#111}
+.oc-chev--down{transform:rotate(180deg)}
+
+/* 결제 상세 한 줄 */
+.oc-payline{
+  display:flex; align-items:flex-start; gap:10px;
+  padding:10px 16px 14px; border-bottom:1px solid var(--line);
+}
+.oc-method{color:#374151}
+.oc-amount{margin-left:auto; color:var(--brand); font-weight:900}
+
+/* 회색 안내 블럭 */
+.oc-notice{
+  background:#f7f8fb; color:#4b5563; font-size:13px; line-height:1.55;
+  padding:12px 16px 16px;
+}
+.oc-notice p{margin:8px 0}
+.oc-notice b{color:#111}
+
+.oc-bottom-pad{height:12px}
+
+
+:root{
+  --ink:#0f172a;
+  --muted:#6b7280;
+  --panel:#fff;
+  --green:#16a34a;
+  --green-soft:#dff6df;    /* 버튼 밝은 초록배경 */
+  --green-text:#12763a;    /* 버튼 글자 초록 */
+}
+
+/* 공통 모달 베이스 */
+.modal{position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .18s ease; z-index:9999; }
+.modal.show{opacity:1; pointer-events:auto;}
+.modal__backdrop{position:absolute; inset:0; background:rgba(0,0,0,.35);}
+.modal__panel{
+  position:relative; width:min(92vw, 420px); background:var(--panel); border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25); padding:28px 20px 20px;
+}
+.modal__close{position:absolute; right:10px; top:8px; border:0; background:transparent;
+  font-size:28px; line-height:1; color:#222; cursor:pointer;}
+
+/* 획득 모달 디테일 */
+.modal-fruit .modal__panel{ width:min(92vw, 360px); } /* 스샷 비율에 가깝게 */
+.fruit-hero{ position:relative; display:grid; place-items:center; margin:8px 0 6px; }
+.fruit-hero .glow{
+  position:absolute; width:240px; height:240px; border-radius:50%;
+  background:radial-gradient(closest-side, #d9f7d9 0%, #e8fbe8 60%, transparent 70%);
+  filter: blur(2px);
+}
+.fruit-hero img{ width:180px; height:auto; position:relative; z-index:1; display:block; }
+
+.fruit-title{
+  margin:10px 0 16px; text-align:center; color:var(--ink);
+  font-size:28px; line-height:1.2; letter-spacing:-.3px; font-weight:900;
+}
+.fruit-title strong{ font-weight:900; }
+
+.fruit-cta{
+  display:flex; align-items:center; justify-content:center;
+  height:52px; width:100%;
+  text-decoration:none; line-height:1; padding:0;
+  border-radius:14px;
+  background:#e6f7e6; color:#12763a;
+  border:1px solid rgba(22,163,74,.25);
+  font-weight:800; font-size:16px; cursor:pointer;
+}
+
+
+
+/* 모달 컨테이너 중앙 정렬 */
+.modal{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;      /* 세로 중앙 */
+  justify-content: center;  /* 가로 중앙 */
+  padding: 16px;            /* 가장자리 안전 여백 */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease;
+  z-index: 10000;
+}
+.modal.show{ opacity:1; pointer-events:auto; }
+
+/* 패널 위치 초기화(바텀시트 스타일 무효화) */
+.modal__panel{
+  position: relative;
+  margin: 0;
+  transform: none;
+  top: auto; bottom: auto; left: auto; right: auto;
+  width: 100%;
+  max-width: 360px;         /* 폰 폭 */
+  max-height: min(90vh, 620px);
+  overflow: auto;
+  background:#fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  padding: 28px 20px 20px;
+}
+

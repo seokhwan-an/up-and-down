@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>주문완료</title>
+  <link rel="stylesheet" href="purchase-complete.css" />
+</head>
+<body>
+  <div class="phone">
+    <!-- 상단 헤더 (타이틀 가운데, 닫기 버튼 우측) -->
+    <header class="oc-appbar">
+      <h1>주문완료</h1>
+      <button class="oc-close" aria-label="닫기">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+
+    <main class="oc-main">
+      <!-- 완료 아이콘/문구 -->
+      <section class="oc-done">
+        <div class="oc-illus">
+          <!-- 초록 상자 일러스트 -->
+          <svg viewBox="0 0 96 96" aria-hidden="true">
+            <defs>
+              <linearGradient id="ocGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#22c55e"/>
+                <stop offset="1" stop-color="#16a34a"/>
+              </linearGradient>
+            </defs>
+            <circle cx="48" cy="48" r="44" fill="#eefaf2"/>
+            <rect x="26" y="34" width="44" height="28" rx="6" fill="url(#ocGrad)"/>
+            <rect x="30" y="29" width="22" height="8" rx="3" fill="#b9f5d6"/>
+            <rect x="34" y="48.5" width="28" height="4" rx="2" fill="#fff" opacity=".95"/>
+          </svg>
+          <!-- 검정 동그라미 체크 뱃지 (좌측 하단 겹침) -->
+          <span class="oc-badge">✓</span>
+        </div>
+        <h2>주문을 완료했어요!</h2>
+        <p class="oc-sub">안전하게 배송해 드릴게요.</p>
+      </section>
+
+      <!-- 구분영역 -->
+      <div class="oc-section-gap"></div>
+
+      <!-- 주문번호 -->
+      <section class="oc-row">
+        <div class="oc-label">주문번호</div>
+        <div class="oc-value">
+          <code>Y2509041290427</code>
+          <button class="oc-iconbtn" aria-label="복사">
+            <svg viewBox="0 0 24 24">
+              <rect x="9" y="9" width="10" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="5" y="3" width="10" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- 배송 정보 -->
+      <section class="oc-row">
+        <div class="oc-label">배송 정보</div>
+        <div class="oc-value">
+          <a href="#" class="oc-link">배송지 변경</a>
+          <svg class="oc-chev" viewBox="0 0 24 24">
+            <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 연락처 단독 라인 -->
+      <section class="oc-row oc-row--single">
+        <div class="oc-value oc-value--only">010-*****-9190</div>
+      </section>
+
+      <!-- 결제금액(헤더) -->
+      <section class="oc-row">
+        <div class="oc-label">결제금액</div>
+        <div class="oc-value">
+          <svg class="oc-chev oc-chev--down" viewBox="0 0 24 24">
+            <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 결제 라인 -->
+      <section class="oc-payline">
+        <div class="oc-method">신용카드 (삼성카드 / 일시불)</div>
+        <div class="oc-amount">19,476원</div>
+      </section>
+
+      <!-- 회색 안내 -->
+      <section class="oc-notice">
+        <p>• 올리브영 배송상품은 <b>[결제완료]</b> 상태까지 주문 취소가 가능하며, <b>[배송준비중]</b>일 때는 고객센터를 통해 취소 요청할 수 있습니다.</p>
+        <p>• 이미 발송이 시작된 경우에는 취소가 불가할 수 있으며, 상품 수령 후 반품 요청 부탁드립니다.</p>
+        <p>• 업체 배송상품은 <b>[결제완료]</b> 상태까지 주문 취소가 가능합니다. <b>[배송준비중]</b> 때도 취소할 수 있도록 추후 개선될 예정입니다.</p>
+      </section>
+
+      <div class="oc-bottom-pad"></div>
+    </main>
+  </div>
+
+<!-- 획득 모달 -->
+<div class="modal modal-fruit" id="fruit-win-modal" aria-hidden="true">
+  <!-- ✅ 닫는 태그 추가 -->
+  <div class="modal__backdrop" data-close></div>
+
+  <div class="modal__panel">
+    <button class="modal__close" aria-label="닫기" data-close>&times;</button>
+
+    <div class="fruit-hero">
+      <span class="glow" aria-hidden="true"></span>
+      <img src="image/purchase-complete/olli.png" alt="올리브 캐릭터" style="width:150px;height:200px;" />
+    </div>
+
+    <h3 class="fruit-title">
+      <strong>열매 1개를</strong><br />획득했어요!
+    </h3>
+
+    <a class="fruit-cta" href="orrak-my-fruit.html">오르락에서 확인하기</a>
+  </div>
+</div>
+
+<!-- 자동 표시(1초 후) + 닫기 -->
+<script>
+  // 1초 뒤 열기
+  setTimeout(() => {
+    document.getElementById('fruit-win-modal')?.classList.add('show');
+  }, 1000);
+
+  document.addEventListener('click', function (e) {
+    const closeEl = e.target.closest('[data-close]');
+    if (!closeEl) return;
+
+    const modal = closeEl.closest('.modal');
+    if (!modal) return;
+
+    modal.classList.remove('show');          // 보임 상태 해제
+    modal.setAttribute('aria-hidden', 'true');
+    // 선택: 모달 띄우며 막아둔 스크롤 복구
+    document.body.style.overflow = '';
+  });
+</script>
+</body>
+</html>
