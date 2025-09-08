@@ -137,6 +137,23 @@ body{margin:0; background:var(--bg); color:var(--text);
   transition:transform .05s ease, box-shadow .15s ease, background-color .15s ease;
 }
 
+/* 둘 다 글자 크기 동일 + 가운데 정렬(가로/세로) */
+.actions .btn{
+  /* 기존 색/테두리/그림자 등은 건드리지 않습니다 */
+  display:flex;                 /* 중앙 정렬을 위해 flex 사용 */
+  align-items:center;           /* 세로 중앙 */
+  justify-content:center;       /* 가로 중앙 */
+  text-align:center;
+  line-height:1;                /* 텍스트 위아래 여백 동일화 */
+  font-size:16px;               /* ← 원하는 크기로 통일 (예: 16px) */
+  font-weight:900;              /* 굵기 통일, 필요 시 조정 */
+  padding:0 16px;               /* 좌우 여백 */
+}
+
+/* (선택) 두 버튼 폭을 동일하게 하고 싶다면 유지, 아니면 지우세요 */
+.actions .btn{ flex:1; }
+
+
 /* Primary */
 .btn--primary{
   background:#16a34a; color:#fff;
@@ -166,3 +183,91 @@ body{margin:0; background:var(--bg); color:var(--text);
   .tabbar a{display:flex; flex-direction:column; align-items:center; gap:4px; color:#1f2937; text-decoration:none; font-size:11.5px; font-weight:800; min-width:60px}
   .tabbar .icon{width:24px; height:24px}
   .tabbar a.active{color:#111}
+
+  :root{
+  --text:#111827; --muted:#6b7280;
+  --line:#eef1f4; --bg:#f6f7fb;
+  --white:#fff;
+  --green:#22c55e; --green-d:#16a34a; --shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+/* 토글 체크박스 숨김 */
+.oy-modal-toggle{ position:fixed; width:0; height:0; opacity:0; pointer-events:none; }
+
+/* 모달 베이스 */
+.oy-modal{
+  position:fixed; inset:0; z-index:1000;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .2s ease;
+}
+.oy-modal__backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.45); }
+.oy-modal__panel{
+  position:relative; width:min(92vw, 380px);
+  background:#fff; border-radius:24px; box-shadow:var(--shadow);
+  padding:20px 18px 16px;
+}
+
+/* 열림 상태 */
+.oy-modal-toggle:checked ~ .oy-modal{
+  opacity:1; pointer-events:auto;
+}
+
+/* 제목/닫기 */
+.oy-modal__title{
+  margin:6px 0 14px; text-align:center; color:#111; font-size:18px; line-height:1.35;
+  font-weight:900;
+}
+.oy-modal__close{
+  position:absolute; right:10px; top:8px;
+  width:32px; height:32px; display:grid; place-items:center;
+  font-size:22px; color:#111; text-decoration:none; cursor:pointer;
+  background:transparent; border:0;
+}
+
+/* 리스트 */
+.oy-lot-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+.lot{ margin:0; }
+.lot__radio{ position:absolute; opacity:0; pointer-events:none; }
+
+.lot__row{
+  display:grid; grid-template-columns:24px 56px 1fr auto; align-items:center; gap:12px;
+  padding:12px 14px; border:1px solid var(--line); border-radius:14px; background:var(--white);
+  box-shadow:0 1px 0 rgba(0,0,0,.02) inset;
+  cursor:pointer; user-select:none;
+}
+
+/* 좌측 라디오 표시(커스텀) */
+.lot__check{
+  width:18px; height:18px; border-radius:50%;
+  border:2px solid var(--green-d); display:inline-block; position:relative;
+}
+.lot__radio:checked + .lot__row .lot__check::after{
+  content:""; position:absolute; left:50%; top:50%; width:10px; height:10px;
+  background:var(--green-d); border-radius:50%; transform:translate(-50%,-50%);
+}
+
+/* 썸네일 묶음 (간단 플레이스홀더) */
+.thumbs{ display:flex; gap:4px; }
+.thumbs i{ width:16px; height:24px; border-radius:4px; background:linear-gradient(135deg,#f0f3f8,#fff); border:1px solid #e5e8ee; box-shadow:0 1px 0 rgba(0,0,0,.03) inset; }
+
+/* 텍스트 */
+.lot__text b{ display:block; color:#111; font-size:14px; font-weight:900; margin-bottom:2px; }
+.lot__text small{ color:var(--muted); }
+
+/* 포인트 */
+.lot__point{ font-size:14px; font-weight:900; color:#111; }
+
+/* 확인 버튼 */
+.oy-modal__cta{
+  display:block; margin-top:14px;
+  height:44px; border-radius:12px;
+  background:var(--green-d); color:#fff; font-weight:900;
+  text-align:center; line-height:44px; text-decoration:none; cursor:pointer;
+}
+
+/* 접근성 포커스 */
+.oy-modal__panel label:focus-visible,
+.oy-modal__cta:focus-visible,
+.oy-modal__close:focus-visible{
+  outline:2px solid var(--green-d); outline-offset:2px; border-radius:12px;
+}

@@ -154,7 +154,7 @@
 
         <!-- CTA -->
         <div class="actions ctas">
-            <button type="button" id="btnConvert" class="btn btn--primary">OY포인트 전환</button>
+            <label for="oyModal" class="btn btn--primary">OY 포인트 전환</label>
             <button type="button" id="btnExtend"  class="btn btn--secondary">보유 연장</button>
         </div>
       </section>
@@ -186,5 +186,57 @@
       </a>
     </nav>
   </div>
+
+
+  <!-- 모달 토글 (숨김 체크박스) -->
+<input id="oyModal" type="checkbox" class="oy-modal-toggle" />
+
+<!-- 모달 -->
+<div class="oy-modal" role="dialog" aria-modal="true" aria-labelledby="oyModalTitle">
+  <!-- 배경(눌러도 닫힘) -->
+  <label for="oyModal" class="oy-modal__backdrop" aria-hidden="true"></label>
+
+  <div class="oy-modal__panel">
+    <label for="oyModal" class="oy-modal__close" aria-label="닫기">×</label>
+
+    <h3 id="oyModalTitle" class="oy-modal__title">
+      포인트로 교환하려는<br>열매를 선택해주세요
+    </h3>
+
+    <ul class="oy-lot-list">
+      <li class="lot">
+        <input type="radio" name="lot" id="lot1" class="lot__radio" checked>
+        <label for="lot1" class="lot__row">
+          <span class="lot__check"></span>
+          <span class="thumbs"><i></i><i></i><i></i></span>
+          <span class="lot__text"><b>구매일시 | 2025.06.10</b><small>1 열매</small></span>
+          <span class="lot__point"><b>50P</b></span>
+        </label>
+      </li>
+      <li class="lot">
+        <input type="radio" name="lot" id="lot2" class="lot__radio">
+        <label for="lot2" class="lot__row">
+          <span class="lot__check"></span>
+          <span class="thumbs"><i></i><i></i><i></i></span>
+          <span class="lot__text"><b>구매일시 | 2025.06.10</b><small>1 열매</small></span>
+          <span class="lot__point"><b>50P</b></span>
+        </label>
+      </li>
+      <li class="lot">
+        <input type="radio" name="lot" id="lot3" class="lot__radio">
+        <label for="lot3" class="lot__row">
+          <span class="lot__check"></span>
+          <span class="thumbs"><i></i><i></i><i></i></span>
+          <span class="lot__text"><b>구매일시 | 2025.09.05</b><small>1 열매</small></span>
+          <span class="lot__point"><b>20P</b></span>
+        </label>
+      </li>
+    </ul>
+
+    <!-- 확인을 눌러도 닫히게끔 라벨로 처리 -->
+    <label for="oyModal" class="oy-modal__cta">OY 포인트로 바꾸기</label>
+  </div>
+</div>
+
 </body>
 </html>
