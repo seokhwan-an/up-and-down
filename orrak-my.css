@@ -54,13 +54,13 @@
   .tabs::-webkit-scrollbar{display:none}
   .tabs::before, .tabs::after{content:""; flex:0 0 16px}
   .tabs a{
+    font-size: 12px;
     position:relative; display:inline-flex; align-items:center; justify-content:center;
     height:36px; padding:0 2px; line-height:1; font-weight:800; color:#6b7280; text-decoration:none;
-    font-size: 12px;
   }
   .tabs a.active{color:#111}
   .tabs a.active::after{content:""; position:absolute; bottom:-8px; left:50%; width:24px; height:3px; background:#111; border-radius:3px; transform:translateX(-50%)}
-  .tabs a.with-new .new{positiozn:absolute; top:-10px; left:50%; transform:translateX(-50%); font-size:11px; color:#ff2d55; font-weight:900; line-height:1; pointer-events:none}
+  .tabs a.with-new .new{position:absolute; top:-10px; left:50%; transform:translateX(-50%); font-size:11px; color:#ff2d55; font-weight:900; line-height:1; pointer-events:none}
 
 
   /* ── 2차 탭(좌우 16px, 높이/두께 정렬) ── */

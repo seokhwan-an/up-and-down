@@ -41,9 +41,9 @@ body{margin:0; background:var(--bg); color:var(--text);
   .tabs::-webkit-scrollbar{display:none}
   .tabs::before, .tabs::after{content:""; flex:0 0 16px}
   .tabs a{
+    font-size: 12px;
     position:relative; display:inline-flex; align-items:center; justify-content:center;
     height:36px; padding:0 2px; line-height:1; font-weight:800; color:#6b7280; text-decoration:none;
-    font-size: 12px;
   }
   .tabs a.active{color:#111}
   .tabs a.active::after{content:""; position:absolute; bottom:-8px; left:50%; width:24px; height:3px; background:#111; border-radius:3px; transform:translateX(-50%)}
