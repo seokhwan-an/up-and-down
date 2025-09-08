@@ -99,6 +99,19 @@
   .chg span{opacity:.7; font-weight:700}
   .chg.up{color:var(--red)}
   .chg.down{color:#2563eb}
+
+  /* a 요소도 카드처럼 보이게 */
+a.item{
+  text-decoration:none;
+  color:inherit;
+  /* 이미 .item{display:grid; …}가 있다면 그대로 적용됨 */
+}
+a.item:focus-visible{
+  outline:2px solid #111;
+  outline-offset:2px;
+  border-radius:16px; /* 카드 둥근값과 일치 */
+}
+
   
   /* 하단 탭바 (홈과 동일) */
   .tabbar{
