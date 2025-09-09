@@ -6,12 +6,20 @@
   <title>오르락마이 – 보유 열매 상세</title>
   <link rel="stylesheet" href="orrak-my-fruit-detail.css" />
   <script>
+  // window.OY_STOCK_CHART_OPTIONS = {
+  //   min: 6000, max: 9000, tickMs: 1500, pointsCount: 40
+  //   // ids: { root:'oyStockChart', svg:'oyChart', ... }  // id를 커스터마이즈할 때
+  // };
   window.OY_STOCK_CHART_OPTIONS = {
-    min: 6000, max: 9000, tickMs: 1500, pointsCount: 40
-    // ids: { root:'oyStockChart', svg:'oyChart', ... }  // id를 커스터마이즈할 때
+    pointsCount: 40,     // 오른쪽 끝까지 점 개수 (기본 40)
+    durationMs: 4000,    // ← 4초에 정확히 끝까지
+    compressMs: 120,     // 4초 이후 압축 단계 갱신 간격
+    min: 6000,
+    max: 9000,
+    volPct: 0.7          // 등락폭(0.05~1.0)
   };
 </script>
-<script src="js/orrak-my-fruit-detail/stock-chart2.js" defer></script>
+<script src="js/orrak-my-fruit-detail/stock-chart3.js" defer></script>
 
 </head>
 <body>
