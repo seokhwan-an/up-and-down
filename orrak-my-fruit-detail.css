@@ -34,21 +34,20 @@ body{margin:0; background:var(--bg); color:var(--text);
 
 /* 1차 탭 */
 .tabs{
-    display:flex; align-items:flex-end; gap:18px; padding:6px 0 10px;
-    border-bottom:1px solid var(--line); overflow-x:auto; overflow-y:visible;
-    -webkit-overflow-scrolling:touch; scrollbar-width:none;
-  }
-  .tabs::-webkit-scrollbar{display:none}
-  .tabs::before, .tabs::after{content:""; flex:0 0 16px}
-  .tabs a{
-    font-size: 12px;
-    position:relative; display:inline-flex; align-items:center; justify-content:center;
-    height:36px; padding:0 2px; line-height:1; font-weight:800; color:#6b7280; text-decoration:none;
-  }
-  .tabs a.active{color:#111}
-  .tabs a.active::after{content:""; position:absolute; bottom:-8px; left:50%; width:24px; height:3px; background:#111; border-radius:3px; transform:translateX(-50%)}
-  .tabs a.with-new .new{position:absolute; top:-10px; left:50%; transform:translateX(-50%); font-size:11px; color:#ff2d55; font-weight:900; line-height:1; pointer-events:none}
-
+  display:flex; align-items:flex-end; gap:18px; padding:6px 0 10px;
+  border-bottom:1px solid var(--line); overflow-x:auto; overflow-y:visible;
+  -webkit-overflow-scrolling:touch; scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tabs::before, .tabs::after{content:""; flex:0 0 16px}
+.tabs a{
+  font-size: 12px;
+  position:relative; display:inline-flex; align-items:center; justify-content:center;
+  height:36px; padding:0 2px; line-height:1; font-weight:800; color:#6b7280; text-decoration:none;
+}
+.tabs a.active{color:#111}
+.tabs a.active::after{content:""; position:absolute; bottom:-8px; left:50%; width:24px; height:3px; background:#111; border-radius:3px; transform:translateX(-50%)}
+.tabs a.with-new .new{position:absolute; top:-10px; left:50%; transform:translateX(-50%); font-size:11px; color:#ff2d55; font-weight:900; line-height:1; pointer-events:none}
 
 /* 2차 탭 */
 .subtabs{display:flex; gap:18px; padding:8px 16px; border-bottom:1px solid var(--line)}
@@ -56,13 +55,12 @@ body{margin:0; background:var(--bg); color:var(--text);
 .subtabs a.active{color:#111}
 .subtabs a.active::after{content:""; position:absolute; left:0; right:0; bottom:-9px; height:3px; background:#111; border-radius:3px}
 
-
 /* 칩 탭 */
 .segtabs{display:flex; gap:8px; padding:10px 16px; border-bottom:1px solid var(--line); background:#fff}
 .seg{
-    display:inline-flex; align-items:center; justify-content:center;
-    height:32px; padding:0 12px; border-radius:999px; font-weight:800; font-size:13px;
-    color:#333; background:#f2f4f6; text-decoration:none;
+  display:inline-flex; align-items:center; justify-content:center;
+  height:32px; padding:0 12px; border-radius:999px; font-weight:800; font-size:13px;
+  color:#333; background:#f2f4f6; text-decoration:none;
 }
 .seg.active{background:#111; color:#fff}
 
@@ -98,133 +96,63 @@ body{margin:0; background:var(--bg); color:var(--text);
 .chart{position:relative; background:#fff; border-radius:16px; overflow:hidden; margin-top:10px}
 .grid{
   position:absolute; inset:0;
-  background:
-    repeating-linear-gradient(to bottom, transparent 0 26px, #edf2f7 26px 27px);
-  pointer-events:none;
-}
-.chart svg{display:block}
-
-/* 말풍선 */
-/* .hint{position:absolute; background:#0f172a; color:#fff; padding:8px 10px; border-radius:10px; font-size:12px; box-shadow:0 6px 14px rgba(2,6,23,.2)}
-.hint small{display:block; opacity:.75; font-size:11px}
-.hint:after{content:""; position:absolute; left:14px; bottom:-7px; border:7px solid transparent; border-top-color:#0f172a} */
-
-/* 차트 캔버스 */
-.chart{ position:relative; background:#fff; border-radius:16px; overflow:hidden; }
-.chart svg{ display:block; width:100%; height:170px; }
-.grid{
-  position:absolute; inset:0;
   background:repeating-linear-gradient(to bottom, transparent 0 26px, #edf2f7 26px 27px);
   pointer-events:none;
 }
+.chart svg{display:block; width:100%; height:170px}
 
-/* 말풍선 */
-/* 말풍선: 포인트 '아래'에 살짝 붙이기 */
+/* 말풍선(포인트 아래로 10px) */
 .hint{
   position:absolute;
   background:#0f172a; color:#fff;
   padding:8px 10px; border-radius:10px; font-size:12px;
   box-shadow:0 6px 14px rgba(2,6,23,.2);
-  transform:translate(-50%, 10px);     /* ← 아래로 10px */
+  transform:translate(-50%, 10px);
   white-space:nowrap; pointer-events:none;
 }
 .hint small{ display:block; opacity:.75; font-size:11px; }
-
-/* 꼬리(위쪽을 향하도록 변경) */
 .hint::after{
   content:"";
-  position:absolute; left:50%; top:-7px;          /* ← 위쪽으로 이동 */
+  position:absolute; left:50%; top:-7px;
   transform:translateX(-50%);
   border:7px solid transparent;
-  border-bottom-color:#0f172a;                     /* ↓ 아래 방향 삼각형 */
+  border-bottom-color:#0f172a;
 }
 
-/* X축 라벨 */
-.xlabels{display:flex; justify-content:space-between; padding:8px 6px 2px; color:#6b7280; font-size:12px}
-.xlabels .sel{font-weight:900; color:#111}
-
-/* 기간 칩 */
-.periods{
-  display:flex; gap:10px; padding:8px 0 0; align-items:center; flex-wrap:wrap;
-}
-.chip{
-  display:inline-flex; align-items:center; justify-content:center;
-  height:30px; padding:0 14px; border-radius:12px; font-size:13px; font-weight:800;
-  background:#eafaf0; color:#15803d;
-}
-.chip.ghost{background:#f2f4f6; color:#6b7280; font-weight:700}
-.chip.active{background:#eafaf0; color:#15803d}
-
-/* CTA */
-/* CTA 버튼 공통 */
-.actions.ctas{display:flex; gap:10px; padding-top:12px}
+/* CTA 버튼 */
+.actions.ctas{display:flex; gap:10px; padding:12px 12px 16px}
 .btn{
   flex:1; height:44px;
   border-radius:12px;
-  font-weight:900; font-size:14px;
+  font-weight:900; font-size:16px;
+  display:flex; align-items:center; justify-content:center;
   cursor:pointer; user-select:none;
   appearance:none; border:0; outline:none;
   transition:transform .05s ease, box-shadow .15s ease, background-color .15s ease;
 }
-
-/* 둘 다 글자 크기 동일 + 가운데 정렬(가로/세로) */
-.actions .btn{
-  /* 기존 색/테두리/그림자 등은 건드리지 않습니다 */
-  display:flex;                 /* 중앙 정렬을 위해 flex 사용 */
-  align-items:center;           /* 세로 중앙 */
-  justify-content:center;       /* 가로 중앙 */
-  text-align:center;
-  line-height:1;                /* 텍스트 위아래 여백 동일화 */
-  font-size:16px;               /* ← 원하는 크기로 통일 (예: 16px) */
-  font-weight:900;              /* 굵기 통일, 필요 시 조정 */
-  padding:0 16px;               /* 좌우 여백 */
-}
-
-/* (선택) 두 버튼 폭을 동일하게 하고 싶다면 유지, 아니면 지우세요 */
-.actions .btn{ flex:1; }
-
-
-/* Primary */
 .btn--primary{
   background:#16a34a; color:#fff;
   box-shadow:0 8px 16px rgba(22,163,74,.18);
 }
-.btn--primary:hover{box-shadow:0 10px 20px rgba(22,163,74,.24)}
 .btn--primary:active{transform:translateY(1px)}
-
-/* Secondary (연한 초록 버튼) */
 .btn--secondary{
-  background:#eafaf0; color:#15803d;
-  border:1px solid #bfe6cf;
+  background:#eafaf0; color:#15803d; border:1px solid #bfe6cf;
 }
-.btn--secondary:hover{background:#e3f6ea}
 .btn--secondary:active{transform:translateY(1px)}
 
-/* 비활성 상태 예비 */
-.btn:disabled{opacity:.5; cursor:not-allowed; box-shadow:none}
-
-
-/* 하단 탭바 (홈 동일) */
+/* 하단 탭바 */
 .tabbar{
-    position:absolute; left:0; right:0; bottom:0;
-    display:flex; justify-content:space-around; align-items:center;
-    padding:8px; border-top:1px solid #edf0f3; background:#fff;
-  }
-  .tabbar a{display:flex; flex-direction:column; align-items:center; gap:4px; color:#1f2937; text-decoration:none; font-size:11.5px; font-weight:800; min-width:60px}
-  .tabbar .icon{width:24px; height:24px}
-  .tabbar a.active{color:#111}
-
-  :root{
-  --text:#111827; --muted:#6b7280;
-  --line:#eef1f4; --bg:#f6f7fb;
-  --white:#fff;
-  --green:#22c55e; --green-d:#16a34a; --shadow:0 20px 60px rgba(0,0,0,.25);
+  position:absolute; left:0; right:0; bottom:0;
+  display:flex; justify-content:space-around; align-items:center;
+  padding:8px; border-top:1px solid #edf0f3; background:#fff;
 }
+.tabbar a{display:flex; flex-direction:column; align-items:center; gap:4px; color:#1f2937; text-decoration:none; font-size:11.5px; font-weight:800; min-width:60px}
+.tabbar .icon{width:24px; height:24px}
+.tabbar a.active{color:#111}
 
-/* 토글 체크박스 숨김 */
+/* ==== 모달 공통 ==== */
 .oy-modal-toggle{ position:fixed; width:0; height:0; opacity:0; pointer-events:none; }
 
-/* 모달 베이스 */
 .oy-modal{
   position:fixed; inset:0; z-index:1000;
   display:flex; align-items:center; justify-content:center;
@@ -233,16 +161,11 @@ body{margin:0; background:var(--bg); color:var(--text);
 .oy-modal__backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.45); }
 .oy-modal__panel{
   position:relative; width:min(92vw, 380px);
-  background:#fff; border-radius:24px; box-shadow:var(--shadow);
+  background:#fff; border-radius:24px; box-shadow:0 20px 60px rgba(0,0,0,.25);
   padding:20px 18px 16px;
 }
+.oy-modal-toggle:checked ~ .oy-modal{ opacity:1; pointer-events:auto; }
 
-/* 열림 상태 */
-.oy-modal-toggle:checked ~ .oy-modal{
-  opacity:1; pointer-events:auto;
-}
-
-/* 제목/닫기 */
 .oy-modal__title{
   margin:6px 0 14px; text-align:center; color:#111; font-size:18px; line-height:1.35;
   font-weight:900;
@@ -258,123 +181,45 @@ body{margin:0; background:var(--bg); color:var(--text);
 .oy-lot-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
 .lot{ margin:0; }
 .lot__radio{ position:absolute; opacity:0; pointer-events:none; }
-
 .lot__row{
   display:grid; grid-template-columns:24px 56px 1fr auto; align-items:center; gap:12px;
-  padding:12px 14px; border:1px solid var(--line); border-radius:14px; background:var(--white);
+  padding:12px 14px; border:1px solid var(--line); border-radius:14px; background:#fff;
   box-shadow:0 1px 0 rgba(0,0,0,.02) inset;
   cursor:pointer; user-select:none;
 }
-
-/* 이미지 썸네일(그리드 2번째 컬럼 56px에 맞춤) */
 .lot__row .thumbs-img{
-  width:56px;
-  height:56px;
-  display:block;
-  object-fit:contain;              /* 이미지 전체 보이게 (cover 원하면 바꿔도 됨) */
-  background:#fff;
-  border:1px solid #e5e8ee;
-  border-radius:12px;
-  box-shadow:0 1px 0 rgba(0,0,0,.03) inset;
+  width:56px; height:56px; display:block; object-fit:contain;
+  background:#fff; border:1px solid #e5e8ee; border-radius:12px;
 }
-
-/* 이전 플레이스홀더를 쓰고 있다면 안전하게 무효화(선택) */
-.lot__row .thumbs{ display:none !important; }
-
-/* 좌측 라디오 표시(커스텀) */
-.lot__check{
-  width:18px; height:18px; border-radius:50%;
-  border:2px solid var(--green-d); display:inline-block; position:relative;
-}
+.lot__check{ width:18px; height:18px; border-radius:50%; border:2px solid var(--green-d); position:relative; }
 .lot__radio:checked + .lot__row .lot__check::after{
-  content:""; position:absolute; left:50%; top:50%; width:10px; height:10px;
-  background:var(--green-d); border-radius:50%; transform:translate(-50%,-50%);
+  content:""; position:absolute; left:50%; top:50%; width:10px; height:10px; background:var(--green-d); border-radius:50%; transform:translate(-50%,-50%);
 }
-
-/* 썸네일 묶음 (간단 플레이스홀더) */
-.thumbs{ display:flex; gap:4px; }
-.thumbs i{ width:16px; height:16px; border-radius:4px; background:linear-gradient(135deg,#f0f3f8,#fff); border:1px solid #e5e8ee; box-shadow:0 1px 0 rgba(0,0,0,.03) inset; }
-
-/* 텍스트 */
 .lot__text b{ display:block; color:#111; font-size:14px; font-weight:900; margin-bottom:2px; }
 .lot__text small{ color:var(--muted); }
-
-/* 포인트 */
 .lot__point{ font-size:14px; font-weight:900; color:#111; }
-
-/* 확인 버튼 */
 .oy-modal__cta{
-  display:block; margin-top:14px;
-  height:44px; border-radius:12px;
+  display:block; margin-top:14px; height:44px; border-radius:12px;
   background:var(--green-d); color:#fff; font-weight:900;
   text-align:center; line-height:44px; text-decoration:none; cursor:pointer;
 }
 
-/* 접근성 포커스 */
-.oy-modal__panel label:focus-visible,
-.oy-modal__cta:focus-visible,
-.oy-modal__close:focus-visible{
-  outline:2px solid var(--green-d); outline-offset:2px; border-radius:12px;
-}
-
-/* 공통 토글 숨김 (첫 모달과 동일) */
-.oy-modal-toggle{ position:fixed; width:0; height:0; opacity:0; pointer-events:none; }
-
-/* 성공 모달 레이어 */
+/* 성공 모달 */
 .oy-success{
   position:fixed; inset:0; z-index:1100;
   display:flex; align-items:center; justify-content:center;
   opacity:0; pointer-events:none; transition:opacity .2s ease;
 }
 #oySuccess:checked ~ .oy-success{ opacity:1; pointer-events:auto; }
-
-/* 성공이 열리면 첫 모달 가리기 */
 #oySuccess:checked ~ .oy-modal{ opacity:0 !important; pointer-events:none !important; }
 
-/* 배경 딤 */
 .oy-success__backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.45); }
-
-/* 패널 */
 .oy-success__panel{
   position:relative; width:min(92vw,360px);
   background:#fff; border-radius:24px; box-shadow:0 20px 60px rgba(0,0,0,.25);
   padding:20px 18px 16px; text-align:center; z-index:2;
 }
 .oy-success__title{ margin:4px 0 12px; font-size:28px; font-weight:900; }
-
-/* 코인 배경(장식) */
-.coins{ position:absolute; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
-.coins-img{ position:absolute; left:50%; transform:translateX(-50%); width:120%; max-width:none; }
-.coins-img.top{ top:-10px; }
-.coins-img.bottom{ bottom:-10px; }
-
-/* 마스코트(심플) */
-.mascot{
-  width:160px; height:160px; margin:8px auto 10px;
-  background:#22c55e; border-radius:50%;
-  box-shadow:inset 0 -10px 0 #16a34a, 0 10px 24px rgba(0,0,0,.15);
-  position:relative;
-}
-.mascot .leaf{
-  position:absolute; width:32px; height:38px; left:50%; top:-16px; transform:translateX(-50%) rotate(-10deg);
-  background:linear-gradient(#34d399,#16a34a); border-radius:20px 20px 2px 20px;
-}
-.mascot .eye{ position:absolute; top:54px; width:22px; height:22px; background:#fff; border-radius:50%; }
-.mascot .eye.l{ left:48px; }
-.mascot .eye.r{ right:48px; }
-.mascot .eye::after{ content:""; position:absolute; left:6px; top:6px; width:10px; height:10px; background:#111; border-radius:50%; }
-.mascot .mouth{ position:absolute; left:50%; top:94px; width:30px; height:18px; transform:translateX(-50%); border-bottom:8px solid #0f172a; border-radius:0 0 20px 20px; }
-.mascot .coin{
-  position:absolute; left:40px; top:86px; width:42px; height:42px; border-radius:50%;
-  background:radial-gradient(70% 70% at 35% 30%, #ffef9c 0%, #ffd54d 50%, #f0b400 100%);
-  box-shadow:inset 0 4px 0 #ffd96a, inset 0 -6px 0 #c68700;
-}
-.mascot .coin::after{
-  content:"P"; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  font-weight:900; color:#c68700;
-}
-
-/* 성공 CTA 버튼 */
 .success-ctas{ display:flex; gap:10px; margin-top:8px; }
 .success-ctas .btn{
   flex:1; height:44px; border-radius:12px; font-weight:900; font-size:14px;
@@ -382,30 +227,3 @@ body{margin:0; background:var(--bg); color:var(--text);
 }
 .success-ctas .btn.ghost{ background:#eafaf0; color:#15803d; border:1px solid #cfead8; }
 .success-ctas .btn.primary{ background:#16a34a; color:#fff; }
-
-/* === 두 모달 공통 사이즈 === */
-:root{
-  --oy-modal-width: min(92vw, 380px);   /* 필요하면 360px 등으로 조정 */
-  --oy-modal-radius: 24px;
-  --oy-modal-padding: 20px 18px 16px;
-  --oy-modal-shadow: 0 20px 60px rgba(0,0,0,.25);
-  --oy-modal-maxh: min(90vh, 640px);   /* 내용 많을 때 대비 */
-}
-
-/* 패널 크기/모양 통일 */
-.oy-modal__panel,
-.oy-success__panel{
-  width: var(--oy-modal-width);
-  border-radius: var(--oy-modal-radius);
-  padding: var(--oy-modal-padding);
-  box-shadow: var(--oy-modal-shadow);
-  max-height: var(--oy-modal-maxh);
-  overflow-y: auto;                    /* 스크롤 처리 */
-}
-
-/* (선택) 배경 딤도 동일하게 */
-.oy-modal__backdrop,
-.oy-success__backdrop{
-  background: rgba(0,0,0,.45);
-}
-

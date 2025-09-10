@@ -4,28 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <title>오르락마이 – 보유 열매 상세</title>
-  <link rel="stylesheet" href="orrak-my-fruit-detail.css" />
-  <script>
-  // window.OY_STOCK_CHART_OPTIONS = {
-  //   min: 6000, max: 9000, tickMs: 1500, pointsCount: 40
-  //   // ids: { root:'oyStockChart', svg:'oyChart', ... }  // id를 커스터마이즈할 때
-  // };
-  window.OY_STOCK_CHART_OPTIONS = {
-    pointsCount: 40,     // 오른쪽 끝까지 점 개수 (기본 40)
-    durationMs: 4000,    // ← 4초에 정확히 끝까지
-    compressMs: 120,     // 4초 이후 압축 단계 갱신 간격
-    min: 6000,
-    max: 9000,
-    volPct: 0.7          // 등락폭(0.05~1.0)
-  };
-</script>
-<script src="js/orrak-my-fruit-detail/stock-chart3.js" defer></script>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="orrak-my-fruit-detail.css" />
+
+  <!-- 차트 옵션 -->
+  <script>
+    window.OY_STOCK_CHART_OPTIONS = {
+      pointsCount: 40,   // 4초에 오른쪽 끝에 도달할 때까지 사용할 점 개수
+      durationMs: 4000,  // ↑ 성장(자라남) 단계 총 4초
+      compressMs: 120,   // 이후 압축 단계의 갱신 간격(ms)
+      min: 6000,
+      max: 9000,
+      volPct: 0.7        // 변동성(0.05~1.0 사이 권장)
+    };
+  </script>
+
+  <!-- JS -->
+  <script src="js/orrak-my-fruit-detail/stock-chart3.js" defer></script>
+  <script src="js/orrak-my-fruit-detail/modal-points.js" defer></script>
 </head>
 <body>
   <div class="phone">
     <div class="content">
-
       <!-- 상단 -->
       <header class="topbar">
         <div class="brand">
@@ -84,12 +85,12 @@
         <a class="seg" href="#">보유 엠블럼</a>
       </nav>
 
-      <!-- 상단 리스트 1개 -->
+      <!-- 상단 리스트 1개 (동기화 대상) -->
       <section class="mini-list">
         <article class="rowcard js-oy-row">
-          <img src="image/orrak-my-fruit/illiyoon.png" class="thumb">
+          <img src="image/orrak-my-fruit/illiyoon.png" class="thumb" alt="">
           <div class="info">
-            <h3 class="tit">딜라이트 프로젝트 단백질…</h3>
+            <h3 class="tit">일리윤 세라마이드 아토 로션…</h3>
             <div class="meta">
               <span class="olive">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -111,56 +112,39 @@
       </section>
 
       <!-- 카드 내부 -->
-<section class="statcard">
-  <h2>전환 가능 포인트</h2>
-  <div class="point" id="oyPoint">120P</div>
-  <p class="delta">구매 시점보다 <b id="deltaText" data-base="4000" class="up">+4,000점 (+100.0%)</b></p>
+      <section class="statcard">
+        <h2>전환 가능 포인트</h2>
+        <div class="point" id="oyPoint">120P</div>
+        <p class="delta">구매 시점보다 <b id="deltaText" data-base="4000" class="up">+4,000점 (+100.0%)</b></p>
 
-  <!-- 👇 동적 차트 -->
-  <div class="chart" id="oyStockChart">
-    <div class="grid"></div>
-    <svg id="oyChart" viewBox="0 0 320 170" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="oyArea" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#22c55e" stop-opacity="0.42"/>
-          <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <path id="oyAreaPath" fill="url(#oyArea)"></path>
-      <path id="oyLinePath" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round"></path>
-      <circle id="oyMarker" r="5" fill="#16a34a"></circle>
-    </svg>
+        <!-- 👇 동적 차트 -->
+        <div class="chart" id="oyStockChart">
+          <div class="grid"></div>
+          <svg id="oyChart" viewBox="0 0 320 170" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="oyArea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#22c55e" stop-opacity="0.42"/>
+                <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path id="oyAreaPath" fill="url(#oyArea)"></path>
+            <path id="oyLinePath" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round"></path>
+            <circle id="oyMarker" r="5" fill="#16a34a"></circle>
+          </svg>
 
-    <!-- 말풍선 -->
-    <div class="hint" id="oyHint">
-      <small id="oyHintDate">-</small>
-      <strong id="oyHintValue">-</strong>
-    </div>
-  </div>
-</section>
-
-
-        <!-- X축 라벨 -->
-        <!-- <div class="xlabels">
-          <span>1주</span><span class="sel">1개월</span><span>3개월</span><span>6개월</span><span>1년</span><span>전체</span>
-        </div> -->
-
-        <!-- 기간 칩 -->
-        <!-- <div class="periods" role="group" aria-label="기간 선택">
-            <button type="button" class="chip" aria-pressed="true"  data-range="1m">1개월</button>
-            <button type="button" class="chip" aria-pressed="false" data-range="3m">3개월</button>
-            <button type="button" class="chip" aria-pressed="false" data-range="6m">6개월</button>
-            <button type="button" class="chip" aria-pressed="false" data-range="1y">1년</button>
-            <button type="button" class="chip" aria-pressed="false" data-range="all">전체</button>
-        </div> -->
-
-
-        <!-- CTA -->
-        <div class="actions ctas">
-            <label for="oyModal" class="btn btn--primary">OY 포인트 전환</label>
-            <button type="button" id="btnExtend"  class="btn btn--secondary">보유 연장</button>
+          <!-- 말풍선 -->
+          <div class="hint" id="oyHint">
+            <small id="oyHintDate">-</small>
+            <strong id="oyHintValue">-</strong>
+          </div>
         </div>
       </section>
+
+      <!-- CTA -->
+      <div class="actions ctas">
+        <label for="oyModal" class="btn btn--primary">OY 포인트 전환</label>
+        <button type="button" id="btnExtend"  class="btn btn--secondary">보유 연장</button>
+      </div>
     </div>
 
     <!-- 하단 탭바 (홈과 동일 규격) -->
@@ -190,85 +174,67 @@
     </nav>
   </div>
 
-
   <!-- ✅ 성공 모달 토글 -->
-<input id="oySuccess" type="checkbox" class="oy-modal-toggle" />
+  <input id="oySuccess" type="checkbox" class="oy-modal-toggle" />
 
-<!-- ✅ 성공 모달 -->
-<div class="oy-success" role="dialog" aria-modal="true" aria-labelledby="oySuccessTitle">
-  <!-- 배경 (클릭 시 닫기) -->
-  <label for="oySuccess" class="oy-success__backdrop" aria-hidden="true"></label>
-
-  <!-- 동전 배경 (장식) -->
-  <!-- <div class="coins" aria-hidden="true">
-    <img class="coins-img top" src="image/modal/coin-top.png" alt="">
-    <img class="coins-img bottom" src="image/modal/coin-bottom.png" alt="">
-  </div> -->
-
-  <!-- 패널 -->
-  <div class="oy-success__panel">
-    <h3 id="oySuccessTitle" class="oy-success__title">50P 획득!</h3>
-
-    <!-- 간단 마스코트(플레이스홀더) -->
-    <img class="mascot-img" src="/image/modal/oy-mascot.png" alt="포인트 캐릭터" />
-
-    <div class="success-ctas">
-      <label for="oySuccess" class="btn ghost">창 닫기</label>
-      <a href="#" class="btn primary">내 포인트 보러가기</a>
+  <!-- ✅ 성공 모달 -->
+  <div class="oy-success" role="dialog" aria-modal="true" aria-labelledby="oySuccessTitle">
+    <label for="oySuccess" class="oy-success__backdrop" aria-hidden="true"></label>
+    <div class="oy-success__panel">
+      <h3 id="oySuccessTitle" class="oy-success__title">50P 획득!</h3>
+      <img class="mascot-img" src="/image/modal/oli.png" alt="포인트 캐릭터" />
+      <div class="success-ctas">
+        <label for="oySuccess" class="btn ghost">창 닫기</label>
+        <a href="#" class="btn primary">내 포인트 보러가기</a>
+      </div>
     </div>
   </div>
-</div>
-
 
   <!-- 모달 토글 (숨김 체크박스) -->
-<input id="oyModal" type="checkbox" class="oy-modal-toggle" />
+  <input id="oyModal" type="checkbox" class="oy-modal-toggle" />
 
-<!-- 모달 -->
-<div class="oy-modal" role="dialog" aria-modal="true" aria-labelledby="oyModalTitle">
-  <!-- 배경(눌러도 닫힘) -->
-  <label for="oyModal" class="oy-modal__backdrop" aria-hidden="true"></label>
+  <!-- 교환 모달 -->
+  <div class="oy-modal" role="dialog" aria-modal="true" aria-labelledby="oyModalTitle">
+    <label for="oyModal" class="oy-modal__backdrop" aria-hidden="true"></label>
+    <div class="oy-modal__panel">
+      <label for="oyModal" class="oy-modal__close" aria-label="닫기">×</label>
+      <h3 id="oyModalTitle" class="oy-modal__title">
+        포인트로 교환하려는<br>열매를 선택해주세요
+      </h3>
 
-  <div class="oy-modal__panel">
-    <label for="oyModal" class="oy-modal__close" aria-label="닫기">×</label>
+      <ul class="oy-lot-list">
+        <li class="lot">
+          <input type="radio" name="lot" id="lot1" class="lot__radio" checked>
+          <label for="lot1" class="lot__row">
+            <span class="lot__check"></span>
+            <img src="image/orrak-my-fruit/illiyoon.png" class="thumbs-img" alt="" />
+            <span class="lot__text"><b>구매일시 | 2025.09.12</b><small>1 열매</small></span>
+            <span class="lot__point"><b>50P</b></span>
+          </label>
+        </li>
+        <li class="lot">
+          <input type="radio" name="lot" id="lot2" class="lot__radio">
+          <label for="lot2" class="lot__row">
+            <span class="lot__check"></span>
+            <img src="image/orrak-my-fruit/illiyoon.png" class="thumbs-img" alt="" />
+            <span class="lot__text"><b>구매일시 | 2025.06.10</b><small>1 열매</small></span>
+            <span class="lot__point"><b>50P</b></span>
+          </label>
+        </li>
+        <li class="lot">
+          <input type="radio" name="lot" id="lot3" class="lot__radio">
+          <label for="lot3" class="lot__row">
+            <span class="lot__check"></span>
+            <img src="image/orrak-my-fruit/illiyoon.png" class="thumbs-img" alt="" />
+            <span class="lot__text"><b>구매일시 | 2025.06.12</b><small>1 열매</small></span>
+            <span class="lot__point"><b>20P</b></span>
+          </label>
+        </li>
+      </ul>
 
-    <h3 id="oyModalTitle" class="oy-modal__title">
-      포인트로 교환하려는<br>열매를 선택해주세요
-    </h3>
-
-    <ul class="oy-lot-list">
-      <li class="lot">
-        <input type="radio" name="lot" id="lot1" class="lot__radio" checked>
-        <label for="lot1" class="lot__row">
-          <span class="lot__check"></span>
-          <img src="image/orrak-my-fruit/illiyoon.png" class="thumbs-img" alt="딜라이트 프로젝트 단백질 쉐이크 1+1 세트" />
-          <span class="lot__text"><b>구매일시 | 2025.06.10</b><small>1 열매</small></span>
-          <span class="lot__point"><b>50P</b></span>
-        </label>
-      </li>
-      <li class="lot">
-        <input type="radio" name="lot" id="lot2" class="lot__radio">
-        <label for="lot2" class="lot__row">
-          <span class="lot__check"></span>
-          <img src="image/orrak-my-fruit/illiyoon.png" class="thumbs-img" alt="딜라이트 프로젝트 단백질 쉐이크 1+1 세트" />
-          <span class="lot__text"><b>구매일시 | 2025.06.10</b><small>1 열매</small></span>
-          <span class="lot__point"><b>50P</b></span>
-        </label>
-      </li>
-      <li class="lot">
-        <input type="radio" name="lot" id="lot3" class="lot__radio">
-        <label for="lot3" class="lot__row">
-          <span class="lot__check"></span>
-          <img src="image/orrak-my-fruit/illiyoon.png" class="thumbs-img" alt="딜라이트 프로젝트 단백질 쉐이크 1+1 세트" />
-          <span class="lot__text"><b>구매일시 | 2025.09.05</b><small>1 열매</small></span>
-          <span class="lot__point"><b>20P</b></span>
-        </label>
-      </li>
-    </ul>
-
-    <!-- 확인을 눌러도 닫히게끔 라벨로 처리 -->
-    <label for="oySuccess" class="oy-modal__cta">OY 포인트로 바꾸기</label>
+      <!-- 확인(성공 모달 열기) -->
+      <label for="oySuccess" class="oy-modal__cta">OY 포인트로 바꾸기</label>
+    </div>
   </div>
-</div>
-
 </body>
 </html>

@@ -71,6 +71,11 @@
       const step = (Math.random() - 0.5) * RANGE * VOL_PCT;
       return clamp(prev + step, MIN, MAX);
     };
+    // 값 → 포인트(0~1 → 20~220 범위; 중앙값 ~120P)
+    const valueToPoints = (v)=>{
+      const t = (v - MIN) / RANGE;           // 0~1
+      return Math.round(20 + 200 * t);       // 20~220
+    };
 
     // 초기 데이터(왼쪽 앵커 + 다음 점)
     const start = (MIN + MAX) / 2;
@@ -141,7 +146,10 @@
         hint.style.left = `${Math.min(Math.max(x*rx, hintW/2+6), rect.width - hintW/2 - 6)}px`;
         hint.style.top  = `${Math.min(Math.max(y*ry + 10, 6), rect.height - hintH - 6)}px`;
       }
-      if (pointText) pointText.textContent = `${fmt((data[lastIdx]/66)|0)}P`;
+      if (pointText){
+        const p = valueToPoints(data[lastIdx]);
+        pointText.textContent = `${p.toLocaleString('ko-KR')}P`;
+      }
 
       updateDelta(data[lastIdx]);
       updateListRows(data[lastIdx]);
@@ -151,7 +159,7 @@
     let rafId = null, startTime = null, compressTimer = null;
 
     function growStep(now){
-      if (!startTime) startTime = now;
+      if (startTime === null) startTime = now;
 
       const t = Math.min(1, (now - startTime) / DURATION_MS);  // 0~1
       const targetProgress = 2 + Math.floor((N - 2) * t);      // 2 → N
@@ -167,7 +175,10 @@
         rafId = requestAnimationFrame(growStep);
       } else {
         // 마지막 프레임 보정
-        while (progress < N) { data.push(randomStep(data[data.length-1])); progress = data.length; }
+        while (progress < N) {
+          data.push(randomStep(data[data.length-1]));
+          progress = data.length;
+        }
         render();
         startCompress();
       }
@@ -179,12 +190,13 @@
         data.push( randomStep(data[data.length - 1]) );
         progress = data.length;
 
-        // 너무 길어지면 간단 다운샘플
+        // 너무 길어지면 간단 다운샘플(2개 중 1개 버림)
         if (data.length > 300){
           const keep = [data[0]];
           for (let i=1;i<data.length-1;i+=2) keep.push(data[i]);
           keep.push(data[data.length-1]);
-          data.length = 0; Array.prototype.push.apply(data, keep);
+          data.length = 0;
+          Array.prototype.push.apply(data, keep);
           progress = data.length;
         }
         render();
@@ -198,16 +210,29 @@
     // 공개 API(선택)
     window.OY_STOCK_CHART = {
       start(){
-        if (progress < N && !rafId) rafId = requestAnimationFrame(growStep);
-        if (progress >= N && !compressTimer) startCompress();
+        if (progress < N && !rafId) {
+          rafId = requestAnimationFrame(growStep);
+        }
+        if (progress >= N && !compressTimer) {
+          startCompress();
+        }
       },
       stop(){
-        if (rafId) cancelAnimationFrame(rafId), rafId=null;
-        if (compressTimer) clearInterval(compressTimer), compressTimer=null;
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+        if (compressTimer) {
+          clearInterval(compressTimer);
+          compressTimer = null;
+        }
       },
       setBase(v){ BASE = Number(v)||BASE; render(); },
       setSpeed(ms){
-        if (compressTimer) clearInterval(compressTimer), compressTimer=null;
+        if (compressTimer) {
+          clearInterval(compressTimer);
+          compressTimer = null;
+        }
         const m = Math.max(16, Number(ms)||COMPRESS_MS);
         compressTimer = setInterval(()=>{
           data.push(randomStep(data[data.length-1]));
@@ -216,8 +241,8 @@
         }, m);
       },
       reset(){
-        if (rafId) cancelAnimationFrame(rafId), rafId=null;
-        if (compressTimer) clearInterval(compressTimer), compressTimer=null;
+        if (rafId) { cancelAnimationFrame(rafId); rafId=null; }
+        if (compressTimer) { clearInterval(compressTimer); compressTimer=null; }
         data.length=0; data.push(start, randomStep(start)); progress=2; startTime=null; render();
         rafId = requestAnimationFrame(growStep);
       }
@@ -226,11 +251,14 @@
     // 탭 전환 안정화
     document.addEventListener('visibilitychange', ()=>{
       if (document.hidden){
-        if (rafId) cancelAnimationFrame(rafId), rafId=null;
-        if (compressTimer) clearInterval(compressTimer), compressTimer=null;
+        if (rafId) { cancelAnimationFrame(rafId); rafId=null; }
+        if (compressTimer) { clearInterval(compressTimer); compressTimer=null; }
       } else {
-        if (progress < N && !rafId) rafId = requestAnimationFrame(growStep);
-        else if (progress >= N && !compressTimer) startCompress();
+        if (progress < N && !rafId) {
+          rafId = requestAnimationFrame(growStep);
+        } else if (progress >= N && !compressTimer) {
+          startCompress();
+        }
       }
     });
 
@@ -239,7 +267,7 @@
     // 진단: 300ms 후에도 진행 안 하면 경고
     setTimeout(()=>{
       if (progress === 2) {
-        console.warn('[OY] 그래프가 진행되지 않습니다. (경로/ID/콘솔오류 확인 필요)');
+        console.warn('[OY] 그래프가 진행되지 않습니다. (ID 또는 콘솔 오류 확인)');
       }
     }, 300);
   }
